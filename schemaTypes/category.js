@@ -34,6 +34,7 @@ export const category = defineType({
       title: 'ترتيب العرض',
       description: 'الرقم الأصغر يظهر أولاً',
       type: 'number',
+      validation: (rule) => rule.integer().min(0),
     }),
   ],
   orderings: [

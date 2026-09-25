@@ -12,6 +12,20 @@ export const artwork = defineType({
       type: 'image',
       options: {hotspot: true},
       validation: (rule) => rule.required(),
+      // وصف الصورة لضعاف البصر ومحركات البحث
+      fields: [
+        defineField({
+          name: 'alt_ar',
+          title: 'وصف الصورة (عربي)',
+          description: 'جملة قصيرة تصف ما في الصورة',
+          type: 'string',
+        }),
+        defineField({
+          name: 'alt_en',
+          title: 'Image description (English)',
+          type: 'string',
+        }),
+      ],
     }),
     defineField({
       name: 'title_ar',
@@ -53,6 +67,7 @@ export const artwork = defineType({
       title: 'ترتيب العرض',
       description: 'الرقم الأصغر يظهر أولاً',
       type: 'number',
+      validation: (rule) => rule.integer().min(0),
     }),
   ],
   orderings: [

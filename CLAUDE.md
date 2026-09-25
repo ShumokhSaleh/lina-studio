@@ -23,11 +23,24 @@ The account belongs to Lina.
 
 ## Content model (defined here)
 
-- **artwork:** image, title (AR/EN), description (AR/EN), category, display order.
-- **category:** groups artworks. Lina can add and edit categories freely.
-- **about:** portrait, bio (AR/EN), contact links.
+- **artwork:** image (+ alt text AR/EN), title (AR/EN), description (AR/EN),
+  category (reference), year, display order.
+- **category:** title (AR/EN), short description (AR/EN), display order.
+  Lina can add and edit categories freely.
+- **exhibition:** title (AR/EN), venue (AR/EN), year (required), short description (AR/EN).
+  Used as a timeline of her exhibitions.
+- **about:** a **singleton** (only one document, id `about`) — name (AR/EN), tagline (AR/EN),
+  tags, bio (AR/EN), portrait, Instagram, email, other links.
 
-Bilingual: Arabic + English, so text fields are duplicated in both languages.
+Bilingual: Arabic + English, so text fields are duplicated in both languages
+using `_ar` / `_en` suffixes (e.g. `title_ar`, `title_en`). Arabic is the main language:
+Arabic titles are required, English is optional.
+
+### How the "about" singleton works
+
+- `sanity.config.js` hides it from "Create new" and removes delete/duplicate actions.
+- `structure.js` makes the sidebar open that single document directly.
+- To add another singleton, add its name to `singletonTypes` and add it to `structure.js`.
 
 ## How I like to work (developer preferences — Shumokh)
 
