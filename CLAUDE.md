@@ -42,6 +42,8 @@ Arabic titles are required, English is optional.
 - `structure.js` makes the sidebar open that single document directly.
 - To add another singleton, add its name to `singletonTypes` and add it to `structure.js`.
 
+Exact field names for every type: see [SANITY_CONTENT_MODEL.md](SANITY_CONTENT_MODEL.md).
+
 ## How I like to work (developer preferences — Shumokh)
 
 - **Explain in Arabic.**
