@@ -1,9 +1,10 @@
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
-// عن الفنانة: مستند واحد فقط (singleton)
+// الواجهة الرئيسية (أول قسم في الموقع): مستند واحد فقط (singleton)
+// فيه فقط الحقول اللي تظهر في الهيرو
 export const about = defineType({
   name: 'about',
-  title: 'عن الفنانة',
+  title: 'الواجهة الرئيسية',
   type: 'document',
   fields: [
     defineField({
@@ -45,18 +46,6 @@ export const about = defineType({
       options: {layout: 'tags'},
     }),
     defineField({
-      name: 'bio_ar',
-      title: 'النبذة (عربي)',
-      type: 'text',
-      rows: 6,
-    }),
-    defineField({
-      name: 'bio_en',
-      title: 'Bio (English)',
-      type: 'text',
-      rows: 6,
-    }),
-    defineField({
       name: 'portrait',
       title: 'الصورة الشخصية',
       type: 'image',
@@ -67,44 +56,11 @@ export const about = defineType({
       title: 'رابط إنستغرام',
       type: 'url',
     }),
-    defineField({
-      name: 'email',
-      title: 'البريد الإلكتروني',
-      type: 'string',
-      validation: (rule) => rule.email(),
-    }),
-    defineField({
-      name: 'other_links',
-      title: 'روابط أخرى',
-      description: 'أي حسابات تواصل إضافية',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'object',
-          name: 'link',
-          fields: [
-            defineField({
-              name: 'label',
-              title: 'اسم الرابط',
-              type: 'string',
-              validation: (rule) => rule.required(),
-            }),
-            defineField({
-              name: 'url',
-              title: 'الرابط',
-              type: 'url',
-              validation: (rule) => rule.required(),
-            }),
-          ],
-          preview: {select: {title: 'label', subtitle: 'url'}},
-        }),
-      ],
-    }),
   ],
   preview: {
     select: {title: 'name_ar', subtitle: 'name_en', media: 'portrait'},
     prepare({title, subtitle, media}) {
-      return {title: title || 'عن الفنانة', subtitle, media}
+      return {title: title || 'الواجهة الرئيسية', subtitle, media}
     },
   },
 })
