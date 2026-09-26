@@ -3,9 +3,9 @@ export const structure = (S) =>
   S.list()
     .title('المحتوى')
     .items([
-      // "عن الفنانة" يفتح مستنداً واحداً مباشرة
+      // "الواجهة الرئيسية" (أول قسم في الموقع) يفتح مستنداً واحداً مباشرة
       S.listItem()
-        .title('عن الفنانة')
+        .title('الواجهة الرئيسية')
         .id('about')
         .child(S.document().schemaType('about').documentId('about')),
       S.divider(),

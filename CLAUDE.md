@@ -29,8 +29,11 @@ The account belongs to Lina.
   Lina can add and edit categories freely.
 - **exhibition:** title (AR/EN), venue (AR/EN), year (required), short description (AR/EN).
   Used as a timeline of her exhibitions.
-- **about:** a **singleton** (only one document, id `about`) — name (AR/EN), tagline (AR/EN),
-  tags, bio (AR/EN), portrait, Instagram, email, other links.
+- **about:** a **singleton** (only one document, id `about`), shown in the Studio as
+  "الواجهة الرئيسية" — only the hero fields: name (AR/EN), tagline (AR/EN), tags, portrait, Instagram.
+
+Rule: each Studio section maps to one website section. Add fields only when the
+website section that shows them is built (e.g. bio → "about" section, email/links → contact).
 
 Bilingual: Arabic + English, so text fields are duplicated in both languages
 using `_ar` / `_en` suffixes (e.g. `title_ar`, `title_en`). Arabic is the main language:

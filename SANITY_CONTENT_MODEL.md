@@ -23,12 +23,10 @@ All text fields are bilingual: `_ar` = Arabic, `_en` = English.
 - `year` (number, required)
 - `description_ar`, `description_en`
 
-## about (singleton, document id `about`)
+## about (singleton, document id `about`) — shown in the Studio as "الواجهة الرئيسية"
+Only the fields used by the website's hero section.
 - `name_ar`, `name_en`
 - `tagline_ar`, `tagline_en`
 - `tags_ar`, `tags_en` (arrays of strings)
-- `bio_ar`, `bio_en`
 - `portrait` (image)
 - `instagram` (url)
-- `email` (string)
-- `other_links` (array of `{label, url}`)
