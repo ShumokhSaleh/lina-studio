@@ -26,7 +26,7 @@ All text fields are bilingual: `_ar` = Arabic, `_en` = English.
 ## about (singleton, document id `about`)
 - `name_ar`, `name_en`
 - `tagline_ar`, `tagline_en`
-- `tags` (array of strings)
+- `tags_ar`, `tags_en` (arrays of strings)
 - `bio_ar`, `bio_en`
 - `portrait` (image)
 - `instagram` (url)
