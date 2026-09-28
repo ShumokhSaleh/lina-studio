@@ -4,8 +4,8 @@ import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 import {structure} from './structure'
 
-// الأنواع التي لها مستند واحد فقط (مثل صفحة "عن الفنانة")
-const singletonTypes = new Set(['about'])
+// الأنواع التي لها مستند واحد فقط (الواجهة الرئيسية والإحصائيات)
+const singletonTypes = new Set(['about', 'stats'])
 
 export default defineConfig({
   name: 'default',
@@ -18,12 +18,12 @@ export default defineConfig({
 
   schema: {
     types: schemaTypes,
-    // إخفاء "عن الفنانة" من زر "إنشاء جديد" حتى لا يتكرر
+    // إخفاء المستندات الفردية من زر "إنشاء جديد" حتى لا تتكرر
     templates: (templates) => templates.filter(({schemaType}) => !singletonTypes.has(schemaType)),
   },
 
   document: {
-    // منع النسخ والحذف لمستند "عن الفنانة"
+    // منع النسخ والحذف للمستندات الفردية
     actions: (actions, {schemaType}) =>
       singletonTypes.has(schemaType)
         ? actions.filter(({action}) => ['publish', 'discardChanges', 'restore'].includes(action))
