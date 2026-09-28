@@ -8,6 +8,7 @@ export const structure = (S) =>
         .title('الواجهة الرئيسية')
         .id('about')
         .child(S.document().schemaType('about').documentId('about')),
+      // "الإحصائيات" مستند واحد فيه ثلاثة أرقام
       S.listItem()
         .title('الإحصائيات')
         .id('stats')

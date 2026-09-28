@@ -23,14 +23,10 @@ The account belongs to Lina.
 
 ## Content model (defined here)
 
-- **artwork:** image (+ alt text AR/EN), title (AR/EN), description (AR/EN),
-  category (reference), year, display order.
-- **category:** title (AR/EN), short description (AR/EN), display order.
-  Lina can add and edit categories freely.
-- **exhibition:** title (AR/EN), venue (AR/EN), year (required), short description (AR/EN).
-  Used as a timeline of her exhibitions.
 - **about:** a **singleton** (only one document, id `about`), shown in the Studio as
   "الواجهة الرئيسية" — only the hero fields: name (AR/EN), tagline (AR/EN), tags, portrait, Instagram.
+- **stats:** a **singleton** (id `stats`), shown as "الإحصائيات" — exactly 3 items,
+  each with a number, an optional "+" sign, and a label (AR/EN).
 
 Rule: each Studio section maps to one website section. Add fields only when the
 website section that shows them is built (e.g. bio → "about" section, email/links → contact).
@@ -39,7 +35,7 @@ Bilingual: Arabic + English, so text fields are duplicated in both languages
 using `_ar` / `_en` suffixes (e.g. `title_ar`, `title_en`). Arabic is the main language:
 Arabic titles are required, English is optional.
 
-### How the "about" singleton works
+### How the singletons (about, stats) work
 
 - `sanity.config.js` hides it from "Create new" and removes delete/duplicate actions.
 - `structure.js` makes the sidebar open that single document directly.
