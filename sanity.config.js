@@ -5,7 +5,7 @@ import {schemaTypes} from './schemaTypes'
 import {structure} from './structure'
 
 // الأنواع التي لها مستند واحد فقط (مثل صفحة "عن الفنانة")
-const singletonTypes = new Set(['about'])
+const singletonTypes = new Set(['about', 'stats'])
 
 export default defineConfig({
   name: 'default',

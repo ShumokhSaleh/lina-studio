@@ -8,8 +8,8 @@ export const structure = (S) =>
         .title('الواجهة الرئيسية')
         .id('about')
         .child(S.document().schemaType('about').documentId('about')),
-      S.divider(),
-      S.documentTypeListItem('artwork').title('الأعمال الفنية'),
-      S.documentTypeListItem('category').title('التصنيفات'),
-      S.documentTypeListItem('exhibition').title('المعارض'),
+      S.listItem()
+        .title('الإحصائيات')
+        .id('stats')
+        .child(S.document().schemaType('stats').documentId('stats')),
     ])
