@@ -12,6 +12,16 @@ export const stats = defineType({
       description: 'ثلاث إحصائيات بالضبط، بنفس الترتيب اللي تظهر فيه بالموقع',
       type: 'array',
       validation: (rule) => rule.length(3).error('لازم تكون ثلاث إحصائيات بالضبط'),
+      // منع إضافة إحصائية من قائمة (...) في كل عنصر
+      options: {disableActions: ['duplicate', 'addBefore', 'addAfter']},
+      components: {
+        // إخفاء زر "Add item" لما يصير عدد الإحصائيات ثلاثة
+        input: (props) =>
+          props.renderDefault({
+            ...props,
+            arrayFunctions: (props.value?.length ?? 0) >= 3 ? () => null : props.arrayFunctions,
+          }),
+      },
       of: [
         defineArrayMember({
           name: 'stat',
