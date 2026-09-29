@@ -4,11 +4,17 @@ import {defineField, defineType} from 'sanity'
 // نفس القاعدة لازم تُستخدم في الموقع
 export function exhibitionStatus(startDate, endDate) {
   if (!startDate) return null
-  const today = new Date().toISOString().slice(0, 10) // مثال: 2026-09-29
+  // تاريخ اليوم بتوقيت الجهاز (قطر)، مو بتوقيت غرينتش. مثال: 2026-09-29
+  const today = new Date().toLocaleDateString('en-CA')
   const end = endDate || startDate // لو ما فيه تاريخ نهاية نعتبره يوم واحد
   if (today < startDate) return 'قريبًا'
   if (today > end) return 'عُرض سابقًا'
   return 'معروض حاليًا'
+}
+
+// يحوّل التاريخ من 2026-11-28 إلى 28.11.2026 (نفس شكل الإدخال)
+function formatDate(date) {
+  return date ? date.split('-').reverse().join('.') : null
 }
 
 // المعارض: كل معرض مستند مستقل، ولينا تقدر تضيف أكثر من معرض
@@ -85,14 +91,15 @@ export const exhibition = defineType({
     {
       title: 'الأحدث أولًا',
       name: 'startDateDesc',
-      by: [{field: 'startDate', direction: 'desc'}],
+      // المعارض بدون تاريخ تطلع آخر شي
+      by: [{field: 'startDate', direction: 'desc', nulls: 'last'}],
     },
   ],
   preview: {
     select: {title: 'title_ar', startDate: 'startDate', endDate: 'endDate'},
     prepare({title, startDate, endDate}) {
       const status = exhibitionStatus(startDate, endDate)
-      const dates = [startDate, endDate].filter(Boolean).join(' — ')
+      const dates = [formatDate(startDate), formatDate(endDate)].filter(Boolean).join(' — ')
       return {title, subtitle: [status, dates].filter(Boolean).join(' · ')}
     },
   },

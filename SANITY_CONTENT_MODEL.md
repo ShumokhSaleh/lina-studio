@@ -26,13 +26,16 @@ Lina can add as many as she wants. Only `title_ar` is required.
 - `venue_ar`, `venue_en` — venue name, shown as the link text (e.g. "متحف الفن الإسلامي ↗")
 - `link` (url)
 
-Suggested query (newest first): `*[_type == "exhibition"] | order(startDate desc)`
+Query (newest first, exhibitions without a `startDate` last — same order as the Studio):
+`*[_type == "exhibition"] | order(defined(startDate) desc, startDate desc)`
+(plain `order(startDate desc)` would put the undated ones **first**.)
 
 The number next to each exhibition ("01", "02", …) is **not stored** — the website
 generates it from the item's position in that list (index + 1, padded to 2 digits).
 
 The status label is **not stored** — the website computes it from the dates
 (same rule as `exhibitionStatus` in `schemaTypes/exhibition.js`):
+- "today" = the **local** date in Qatar, not UTC (e.g. `new Date().toLocaleDateString('en-CA')`)
 - no `startDate` → no label
 - today < `startDate` → "قريبًا" / "Upcoming"
 - today > `endDate` (or `startDate` if no end) → "عُرض سابقًا" / "Past"

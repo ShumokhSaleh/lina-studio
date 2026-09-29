@@ -13,13 +13,14 @@ export const structure = (S) =>
         .title('الإحصائيات')
         .id('stats')
         .child(S.document().schemaType('stats').documentId('stats')),
-      // "المعارض" قائمة، لينا تقدر تضيف فيها أكثر من معرض (الأحدث أولًا)
+      // "المعارض" قائمة، لينا تقدر تضيف فيها أكثر من معرض
+      // الترتيب: الأحدث ثم الأقدم، والمعارض بدون تاريخ آخر شي
       S.listItem()
         .title('المعارض')
         .id('exhibition')
         .child(
           S.documentTypeList('exhibition')
             .title('المعارض')
-            .defaultOrdering([{field: 'startDate', direction: 'desc'}]),
+            .defaultOrdering([{field: 'startDate', direction: 'desc', nulls: 'last'}]),
         ),
     ])
