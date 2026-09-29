@@ -23,4 +23,9 @@ export const structure = (S) =>
             .title('المعارض')
             .defaultOrdering([{field: 'startDate', direction: 'desc', nulls: 'last'}]),
         ),
+      // "أعمال مختارة" مستند واحد فيه العنوان والنص وست صور بالكثير
+      S.listItem()
+        .title('أعمال مختارة')
+        .id('selectedWorks')
+        .child(S.document().schemaType('selectedWorks').documentId('selectedWorks')),
     ])
