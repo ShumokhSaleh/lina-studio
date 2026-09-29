@@ -29,6 +29,8 @@ The account belongs to Lina.
   each with a number, an optional "+" sign, and a label (AR/EN).
 - **exhibition:** many documents, shown as "المعارض" — title (required), description,
   start/end dates, venue, link. The "on view now / past" label is computed from the dates, not stored.
+- **selectedWorks:** a **singleton** (id `selectedWorks`), shown as "أعمال مختارة" — heading (AR/EN),
+  intro (AR/EN), and up to 6 works (image, title, extra detail). The work number is computed, not stored.
 
 Rule: each Studio section maps to one website section. Add fields only when the
 website section that shows them is built (e.g. bio → "about" section, email/links → contact).
@@ -37,7 +39,7 @@ Bilingual: Arabic + English, so text fields are duplicated in both languages
 using `_ar` / `_en` suffixes (e.g. `title_ar`, `title_en`). Arabic is the main language:
 Arabic titles are required, English is optional.
 
-### How the singletons (about, stats) work
+### How the singletons (about, stats, selectedWorks) work
 
 - `sanity.config.js` hides it from "Create new" and removes delete/duplicate actions.
 - `structure.js` makes the sidebar open that single document directly.

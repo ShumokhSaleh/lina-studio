@@ -40,3 +40,18 @@ The status label is **not stored** — the website computes it from the dates
 - today < `startDate` → "قريبًا" / "Upcoming"
 - today > `endDate` (or `startDate` if no end) → "عُرض سابقًا" / "Past"
 - otherwise → "معروض حاليًا" / "On view now"
+
+## selectedWorks (singleton, document id `selectedWorks`) — shown in the Studio as "أعمال مختارة"
+The small eyebrow label "أعمال مختارة" above the heading is hard-coded in the website, not stored.
+- `heading_ar` (required), `heading_en` — e.g. "حوار بين الذاكرة والمكان"
+- `intro_ar`, `intro_en` (text) — the line next to the heading
+- `works` (array, max 6, in display order), each item has:
+  - `image` (image, required, with hotspot) — has optional `image.alt_ar`, `image.alt_en`
+    (alt text for screen readers; fall back to the work title if empty)
+  - `title_ar` (required), `title_en`
+  - `detail_ar`, `detail_en` — small extra text next to the title (e.g. "2026" or "البحر والذاكرة")
+
+The number on each work ("01", "02", …) is **not stored** — the website generates it
+from the item's position in `works` (index + 1, padded to 2 digits).
+
+Query: `*[_id == "selectedWorks"][0]{ heading_ar, heading_en, intro_ar, intro_en, works[]{ _key, image, title_ar, title_en, detail_ar, detail_en } }`
