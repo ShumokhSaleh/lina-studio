@@ -13,6 +13,7 @@ export const selectedWorks = defineType({
       title: 'العنوان (عربي)',
       description: 'مثال: حوار بين الذاكرة والمكان',
       type: 'string',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'heading_en',
@@ -62,6 +63,21 @@ export const selectedWorks = defineType({
               type: 'image',
               options: {hotspot: true},
               validation: (rule) => rule.required(),
+              // وصف قصير للصورة يقرأه قارئ الشاشة لمن لا يرى الصورة
+              fields: [
+                defineField({
+                  name: 'alt_ar',
+                  title: 'وصف الصورة (عربي)',
+                  description: 'جملة قصيرة تصف اللي في الصورة، مثال: لوحة فيها نخلة وبحر بألوان زرقاء',
+                  type: 'string',
+                }),
+                defineField({
+                  name: 'alt_en',
+                  title: 'Image description (English)',
+                  description: 'A short sentence describing the image',
+                  type: 'string',
+                }),
+              ],
             }),
             defineField({
               name: 'title_ar',

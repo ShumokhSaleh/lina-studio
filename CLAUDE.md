@@ -27,10 +27,10 @@ The account belongs to Lina.
   "الواجهة الرئيسية" — only the hero fields: name (AR/EN), tagline (AR/EN), tags, portrait, Instagram.
 - **stats:** a **singleton** (id `stats`), shown as "الإحصائيات" — exactly 3 items,
   each with a number, an optional "+" sign, and a label (AR/EN).
-- **selectedWorks:** a **singleton** (id `selectedWorks`), shown as "أعمال مختارة" — heading (AR/EN),
-  intro (AR/EN), and up to 6 works (image, title, extra detail). The work number is computed, not stored.
 - **exhibition:** many documents, shown as "المعارض" — title (required), description,
   start/end dates, venue, link. The "on view now / past" label is computed from the dates, not stored.
+- **selectedWorks:** a **singleton** (id `selectedWorks`), shown as "أعمال مختارة" — heading (AR/EN),
+  intro (AR/EN), and up to 6 works (image, title, extra detail). The work number is computed, not stored.
 
 Rule: each Studio section maps to one website section. Add fields only when the
 website section that shows them is built (e.g. bio → "about" section, email/links → contact).
