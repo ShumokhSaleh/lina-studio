@@ -55,3 +55,14 @@ The number on each work ("01", "02", …) is **not stored** — the website gene
 from the item's position in `works` (index + 1, padded to 2 digits).
 
 Query: `*[_id == "selectedWorks"][0]{ heading_ar, heading_en, intro_ar, intro_en, works[]{ _key, image, title_ar, title_en, detail_ar, detail_en } }`
+
+## aboutArtist (singleton, document id `aboutArtist`) — shown in the Studio as "عن الفنانة"
+The small eyebrow label "عن الفنانة" above the quote is hard-coded in the website, not stored.
+- `quote_ar` (required), `quote_en` (text) — the big quote, e.g. "التراث لا يُستنسخ، بل يُعاد اكتشافه."
+- `bio_ar` (required), `bio_en` (text) — paragraphs are separated by an empty line;
+  the website splits on blank lines (e.g. `bio.split(/\n\s*\n/)`) and renders each as a `<p>`.
+- `award` (object, **optional** — may be missing or empty; hide the row if there's no `year`/`title_ar`):
+  - `year` (number, integer) — e.g. 2024
+  - `title_ar`, `title_en` — e.g. "سفيرة التواصل الاجتماعي في الفن"
+
+Query: `*[_id == "aboutArtist"][0]{ quote_ar, quote_en, bio_ar, bio_en, award }`
