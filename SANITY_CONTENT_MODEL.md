@@ -77,3 +77,11 @@ The small eyebrow label "محطات مختارة" above the heading is hard-code
 
 Display order is **newest year first**. The order in the Studio does not matter — sort in the query:
 `*[_id == "milestones"][0]{ heading_ar, heading_en, "items": items | order(year desc){ _key, year, title_ar, title_en, description_ar, description_en } }`
+
+## contact (singleton, document id `contact`) — shown in the Studio as "تواصل"
+The eyebrow "للتعاون", the heading "لنصنع أثرًا يبقى." and the line under it are hard-coded in the website, not stored.
+- `instagram` (url, required) — always starts with `https://www.instagram.com/` (or `https://instagram.com/`).
+  The button text (e.g. "@linaalaali ↗") is not stored — derive the handle from the URL path.
+- `email` (email, optional) — hide the email link if it's empty.
+
+Query: `*[_id == "contact"][0]{ instagram, email }`

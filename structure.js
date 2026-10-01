@@ -38,4 +38,9 @@ export const structure = (S) =>
         .title('محطات مختارة')
         .id('milestones')
         .child(S.document().schemaType('milestones').documentId('milestones')),
+      // "تواصل" مستند واحد فيه رابط الإنستغرام والبريد الإلكتروني
+      S.listItem()
+        .title('تواصل')
+        .id('contact')
+        .child(S.document().schemaType('contact').documentId('contact')),
     ])
