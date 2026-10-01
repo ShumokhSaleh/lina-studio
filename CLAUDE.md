@@ -65,3 +65,6 @@ Exact field names for every type: see [SANITY_CONTENT_MODEL.md](SANITY_CONTENT_M
 ## Useful commands
 
     npm run dev      # run the Studio locally (localhost:3333)
+    npm run deploy   # upload the Studio to Sanity (needed after every code change, not content edits)
+
+Live Studio (Lina signs in with her Sanity account): https://lina-alaali.sanity.studio/
