@@ -19,9 +19,10 @@ export const contact = defineType({
           .uri({scheme: ['https']})
           .custom((value) => {
             if (!value) return true
-            return /^https:\/\/(www\.)?instagram\.com\//.test(value)
+            // نقبل الحروف الكبيرة والصغيرة، ولازم يكون فيه اسم مستخدم بعد instagram.com/
+            return /^https:\/\/(www\.)?instagram\.com\/[^/?#]+/i.test(value)
               ? true
-              : 'لازم يكون رابط إنستغرام، يبدأ بـ https://www.instagram.com/'
+              : 'لازم يكون رابط إنستغرام فيه اسم المستخدم، مثال: https://www.instagram.com/linaalaali'
           }),
     }),
     defineField({
