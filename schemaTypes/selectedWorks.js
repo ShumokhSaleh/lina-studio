@@ -1,7 +1,7 @@
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
 // أعمال مختارة: مستند واحد فقط (singleton)
-// فيه العنوان والنص التعريفي للقسم، وتحته ست صور بالكثير
+// فيه العنوان والنص التعريفي للقسم، وتحته ثلاث صور بالكثير
 // ملاحظة: كلمة "أعمال مختارة" الصغيرة فوق العنوان مكتوبة في كود الموقع، مو هنا
 export const selectedWorks = defineType({
   name: 'selectedWorks',
@@ -38,17 +38,17 @@ export const selectedWorks = defineType({
     defineField({
       name: 'works',
       title: 'الأعمال',
-      description: 'ست أعمال بالكثير، بنفس الترتيب اللي تظهر فيه بالموقع (الرقم يطلع تلقائيًا)',
+      description: 'ثلاث أعمال بالكثير، بنفس الترتيب اللي تظهر فيه بالموقع (الرقم يطلع تلقائيًا)',
       type: 'array',
-      validation: (rule) => rule.max(6).error('الحد الأقصى ست أعمال'),
+      validation: (rule) => rule.max(3).error('الحد الأقصى ثلاث أعمال'),
       // منع إضافة عمل من قائمة (...) في كل عنصر
       options: {disableActions: ['duplicate', 'addBefore', 'addAfter']},
       components: {
-        // إخفاء زر "Add item" لما يصير عدد الأعمال ستة
+        // إخفاء زر "Add item" لما يصير عدد الأعمال ثلاثة
         input: (props) =>
           props.renderDefault({
             ...props,
-            arrayFunctions: (props.value?.length ?? 0) >= 6 ? () => null : props.arrayFunctions,
+            arrayFunctions: (props.value?.length ?? 0) >= 3 ? () => null : props.arrayFunctions,
           }),
       },
       of: [
