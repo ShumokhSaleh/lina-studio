@@ -28,4 +28,9 @@ export const structure = (S) =>
         .title('أعمال مختارة')
         .id('selectedWorks')
         .child(S.document().schemaType('selectedWorks').documentId('selectedWorks')),
+      // "عن الفنانة" مستند واحد فيه الاقتباس والنبذة والتكريم
+      S.listItem()
+        .title('عن الفنانة')
+        .id('aboutArtist')
+        .child(S.document().schemaType('aboutArtist').documentId('aboutArtist')),
     ])
