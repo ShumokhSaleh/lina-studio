@@ -4,8 +4,8 @@ import {visionTool} from '@sanity/vision'
 import {schemaTypes} from './schemaTypes'
 import {structure} from './structure'
 
-// الأنواع التي لها مستند واحد فقط (الواجهة الرئيسية والإحصائيات والأعمال المختارة وعن الفنانة)
-const singletonTypes = new Set(['about', 'stats', 'selectedWorks', 'aboutArtist'])
+// الأنواع التي لها مستند واحد فقط (الواجهة الرئيسية والإحصائيات والأعمال المختارة وعن الفنانة والمحطات)
+const singletonTypes = new Set(['about', 'stats', 'selectedWorks', 'aboutArtist', 'milestones'])
 
 export default defineConfig({
   name: 'default',

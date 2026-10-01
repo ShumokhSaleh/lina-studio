@@ -33,4 +33,9 @@ export const structure = (S) =>
         .title('عن الفنانة')
         .id('aboutArtist')
         .child(S.document().schemaType('aboutArtist').documentId('aboutArtist')),
+      // "محطات مختارة" مستند واحد فيه العنوان وعشرين محطة بالكثير
+      S.listItem()
+        .title('محطات مختارة')
+        .id('milestones')
+        .child(S.document().schemaType('milestones').documentId('milestones')),
     ])
