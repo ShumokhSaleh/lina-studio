@@ -43,4 +43,9 @@ export const structure = (S) =>
         .title('تواصل')
         .id('contact')
         .child(S.document().schemaType('contact').documentId('contact')),
+      // "روابط مهمة" مستند واحد فيه خمس روابط بالكثير، تظهر في الفوتر
+      S.listItem()
+        .title('روابط مهمة')
+        .id('importantLinks')
+        .child(S.document().schemaType('importantLinks').documentId('importantLinks')),
     ])

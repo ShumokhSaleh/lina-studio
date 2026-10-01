@@ -85,3 +85,14 @@ The eyebrow "للتعاون", the heading "لنصنع أثرًا يبقى." and 
 - `email` (email, optional) — hide the email link if it's empty.
 
 Query: `*[_id == "contact"][0]{ instagram, email }`
+
+## importantLinks (singleton, document id `importantLinks`) — shown in the Studio as "روابط مهمة"
+Shown in the website footer. The heading "روابط مهمة" / "Important links" and the copyright line
+("© {current year} {about.name}") are hard-coded in the website, not stored — compute the year at build time.
+- `links` (array, max 5, in display order), each item has:
+  - `title_ar` (required), `title_en` — e.g. "لقائي مع جريدة الشرق"
+  - `url` (url, required, `https://` only) — open in a new tab (`target="_blank" rel="noopener"`)
+
+If `links` is empty, hide the links part and show only the copyright line.
+
+Query: `*[_id == "importantLinks"][0]{ links[]{ _key, title_ar, title_en, url } }`

@@ -5,5 +5,15 @@ import {selectedWorks} from './selectedWorks'
 import {aboutArtist} from './aboutArtist'
 import {milestones} from './milestones'
 import {contact} from './contact'
+import {importantLinks} from './importantLinks'
 
-export const schemaTypes = [about, stats, exhibition, selectedWorks, aboutArtist, milestones, contact]
+export const schemaTypes = [
+  about,
+  stats,
+  exhibition,
+  selectedWorks,
+  aboutArtist,
+  milestones,
+  contact,
+  importantLinks,
+]
