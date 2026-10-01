@@ -37,6 +37,8 @@ The account belongs to Lina.
   20 milestones (year + title AR/EN + short description AR/EN). The website sorts them newest year first.
 - **contact:** a **singleton** (id `contact`), shown as "تواصل" — Instagram link (required) and email (optional).
   The label, heading and text of the contact section are hard-coded in the website.
+- **importantLinks:** a **singleton** (id `importantLinks`), shown as "روابط مهمة" — shown in the footer,
+  up to 5 links (title AR/EN + URL). The "روابط مهمة" heading and the © line are hard-coded in the website.
 
 Rule: each Studio section maps to one website section. Add fields only when the
 website section that shows them is built (e.g. bio → "about" section, email/links → contact).
@@ -45,7 +47,7 @@ Bilingual: Arabic + English, so text fields are duplicated in both languages
 using `_ar` / `_en` suffixes (e.g. `title_ar`, `title_en`). Arabic is the main language:
 Arabic titles are required, English is optional.
 
-### How the singletons (about, stats, selectedWorks, aboutArtist, milestones, contact) work
+### How the singletons (about, stats, selectedWorks, aboutArtist, milestones, contact, importantLinks) work
 
 - `sanity.config.js` hides it from "Create new" and removes delete/duplicate actions.
 - `structure.js` makes the sidebar open that single document directly.
