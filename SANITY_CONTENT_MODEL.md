@@ -66,3 +66,14 @@ The small eyebrow label "عن الفنانة" above the quote is hard-coded in t
   - `title_ar`, `title_en` — e.g. "سفيرة التواصل الاجتماعي في الفن"
 
 Query: `*[_id == "aboutArtist"][0]{ quote_ar, quote_en, bio_ar, bio_en, award }`
+
+## milestones (singleton, document id `milestones`) — shown in the Studio as "محطات مختارة"
+The small eyebrow label "محطات مختارة" above the heading is hard-coded in the website, not stored.
+- `heading_ar` (required), `heading_en` — the big heading, e.g. "من الدوحة إلى العالم"
+- `items` (array, max 20), each item has:
+  - `year` (number, required, integer) — e.g. 2026
+  - `title_ar` (required), `title_en` — e.g. "متحف الفن الإسلامي، الدوحة"
+  - `description_ar`, `description_en` (text, optional) — short line under the title
+
+Display order is **newest year first**. The order in the Studio does not matter — sort in the query:
+`*[_id == "milestones"][0]{ heading_ar, heading_en, "items": items | order(year desc){ _key, year, title_ar, title_en, description_ar, description_en } }`

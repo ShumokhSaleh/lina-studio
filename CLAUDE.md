@@ -33,6 +33,8 @@ The account belongs to Lina.
   intro (AR/EN), and up to 6 works (image, title, extra detail). The work number is computed, not stored.
 - **aboutArtist:** a **singleton** (id `aboutArtist`), shown as "عن الفنانة" — quote (AR/EN), bio (AR/EN),
   and one optional award/honor (year + title AR/EN).
+- **milestones:** a **singleton** (id `milestones`), shown as "محطات مختارة" — heading (AR/EN) and up to
+  20 milestones (year + title AR/EN + short description AR/EN). The website sorts them newest year first.
 
 Rule: each Studio section maps to one website section. Add fields only when the
 website section that shows them is built (e.g. bio → "about" section, email/links → contact).
@@ -41,7 +43,7 @@ Bilingual: Arabic + English, so text fields are duplicated in both languages
 using `_ar` / `_en` suffixes (e.g. `title_ar`, `title_en`). Arabic is the main language:
 Arabic titles are required, English is optional.
 
-### How the singletons (about, stats, selectedWorks, aboutArtist) work
+### How the singletons (about, stats, selectedWorks, aboutArtist, milestones) work
 
 - `sanity.config.js` hides it from "Create new" and removes delete/duplicate actions.
 - `structure.js` makes the sidebar open that single document directly.
